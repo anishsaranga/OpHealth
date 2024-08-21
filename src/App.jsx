@@ -23,7 +23,7 @@ function App() {
       <div className="mx-auto my-7 md:my-9 lg:my-11">
         <span className="flex items-center justify-center mx-auto">
           <img
-            src="/favicon.png"
+            src="./public/favicon.png"
             width={75}
             height={75}
             alt="<logo goes here>"
