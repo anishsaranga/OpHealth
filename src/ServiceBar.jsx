@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { FcApproval } from "react-icons/fc";
 import { FcCancel } from "react-icons/fc";
+import { FcMinus } from "react-icons/fc";
 
 function ServiceBar({ env, service }) {
-  const [statusCode, setStatusCode] = useState("loading");
+  const [statusCode, setStatusCode] = useState("...");
+  // check status
   const checkStatus = async () => {
-    const response = await fetch(env.path + service.end_point);
-    setStatusCode(response.status);
-    // console.log(response.status, typeof response.status);
+    let response;
+    try {
+      setStatusCode("...");
+      response = await fetch(env.path + service.end_point);
+      setStatusCode(response.status);
+    } catch (error) {
+      setStatusCode("x");
+    }
+    console.log(env.path + service.end_point);
+    console.log(response);
   };
 
   useEffect(() => {
     checkStatus();
-  }, []);
+  }, [env]);
 
   return (
     <>
@@ -23,11 +32,20 @@ function ServiceBar({ env, service }) {
           <span className="my-auto p-1 font-light text-sm">{statusCode}</span>
         </p>
         <p className="mr-3 ml-1 my-1 p-1 flex items-center justify-center">
-          {statusCode === 200 ? (
+          {/* checking for status 200 only */}
+          {statusCode === 200 && (
+            <FcApproval className="text-green-500 size-5" />
+          )}
+          {statusCode === "..." && <FcMinus className="size-5" />}
+          {statusCode != 200 && statusCode != "..." && (
+            <FcCancel className="size-5" />
+          )}
+
+          {/* {statusCode === 200 ? (
             <FcApproval className="text-green-500 size-5" />
           ) : (
             <FcCancel className="size-5 text-red-500" />
-          )}
+          )} */}
         </p>
       </div>
     </>
