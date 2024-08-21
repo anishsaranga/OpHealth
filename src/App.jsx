@@ -17,10 +17,17 @@ function App() {
   return (
     <>
       <div className="mx-auto my-7 md:my-9 lg:my-11">
-        {/* <img src="" alt="<logo goes here>" /> */}
-        <h1 className="text-stone-100 font-medium font-['Futura'] text-6xl text-center mx-auto my-3">
-          OpHealth
-        </h1>
+        <span className="flex items-center justify-center mx-auto">
+          <img
+            src="/favicon.png"
+            width={75}
+            height={75}
+            alt="<logo goes here>"
+          />
+          <h1 className="text-stone-100 font-medium font-['Futura'] text-6xl text-center mx-1 my-3">
+            OpHealth
+          </h1>
+        </span>
         <h3 className="text-stone-300 font-normal font-['Futura'] text-center mt-5 md:mt-10 my-5 p-5">
           select environment to check health status of optalk services
         </h3>
