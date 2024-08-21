@@ -3,16 +3,20 @@ import ServiceBar from "./ServiceBar";
 
 function App() {
   const environments = [
-    { env_name: "development", path: "app.optalk.ai" },
-    { env_name: "testing", path: "app.optalk.ai" },
-    { env_name: "staging", path: "app.optalk.ai" },
-    { env_name: "production", path: "app.optalk.ai" },
+    { env_name: "production", path: "https://app.optalk.ai" },
+    { env_name: "staging", path: "https://o5z.optalk.ai" },
   ];
 
-  const services = [{ service_name: "login", end_point: "/login" }];
+  const services = [
+    { service_name: "asset", end_point: "/api/asset/v1/ping" },
+    { service_name: "chatter", end_point: "/api/chatter/v1/ping" },
+    { service_name: "vector", end_point: "/api/vector/v1/ping" },
+    { service_name: "subscription", end_point: "/api/subscription/v1/ping" },
+    { service_name: "model-service", end_point: "/api/model-service/v1/ping" },
+  ];
 
   const [env, setEnv] = useState(environments[0]);
-  // console.log(env);
+  console.log(env);
 
   return (
     <>
@@ -36,7 +40,7 @@ function App() {
             className="py-2 px-2 rounded-lg mx-auto my-2 shadow-inner"
             onChange={(e) => {
               setEnv(environments[e.target.value]);
-              // console.log(e.target.value);
+              console.log("e target val", e.target.value);
             }}
           >
             {
@@ -61,9 +65,10 @@ function App() {
           <div className="flex flex-col justify-between">
             {services.map((service, index) => (
               <ServiceBar
-                key={service}
+                key={index}
                 env={env}
                 service={service}
+                className="w-full flex-grow"
               ></ServiceBar>
             ))}
           </div>
