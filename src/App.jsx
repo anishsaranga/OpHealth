@@ -43,21 +43,15 @@ function App() {
               console.log("e target val", e.target.value);
             }}
           >
-            {
-              environments.map((key, index) => (
-                <option
-                  key={key.env_name}
-                  value={index}
-                  className="font-['Futura']"
-                >
-                  {key.env_name}
-                </option>
-              ))
-              /* {environments &&
-              environments.map((environment) => (
-                <option value={environment} id={environment}></option>
-              ))} */
-            }
+            {environments.map((key, index) => (
+              <option
+                key={key.env_name}
+                value={index}
+                className="font-['Futura']"
+              >
+                {key.env_name}
+              </option>
+            ))}
           </select>
         </div>
 

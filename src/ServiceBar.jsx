@@ -5,7 +5,6 @@ import { FcMinus } from "react-icons/fc";
 
 function ServiceBar({ env, service }) {
   const [statusCode, setStatusCode] = useState("...");
-  // check status
   const checkStatus = async () => {
     let response;
     try {
@@ -16,7 +15,6 @@ function ServiceBar({ env, service }) {
       setStatusCode("x");
     }
     console.log(env.path + service.end_point);
-    console.log(response);
   };
 
   useEffect(() => {
@@ -40,28 +38,10 @@ function ServiceBar({ env, service }) {
           {statusCode != 200 && statusCode != "..." && (
             <FcCancel className="size-5" />
           )}
-
-          {/* {statusCode === 200 ? (
-            <FcApproval className="text-green-500 size-5" />
-          ) : (
-            <FcCancel className="size-5 text-red-500" />
-          )} */}
         </p>
       </div>
     </>
   );
 }
 
-// import React from 'react'
-
-// const ServiceBar = ({service}) => {
-//   return (
-//     <div>
-//         <p></p>
-//     </div>
-//   )
-// }
-
 export default ServiceBar;
-
-// export default ServiceBar
